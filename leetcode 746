@@ -1,0 +1,13 @@
+int minCostClimbingStairs(int* cost, int costSize) {
+    int dp[2];
+    dp[0] = cost[0];
+    dp[1] = cost[1];
+    
+    for (int i = 2; i < costSize; i++) {
+        int dp_atual = cost[i] + (dp[0] < dp[1] ? dp[0] : dp[1]);
+        dp[0] = dp[1];
+        dp[1] = dp_atual;
+    }
+    
+    return dp[0] < dp[1] ? dp[0] : dp[1];
+}
